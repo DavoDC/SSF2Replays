@@ -4,4 +4,4 @@ Helps me synchronize my replays across multiple computers.
 
 Run `updateREADME.py` to update the line below.
 
-### Replay Count = 3820 (as of 16/02/22)
+### Replay Count = 3829 (as of 16/02/22)
