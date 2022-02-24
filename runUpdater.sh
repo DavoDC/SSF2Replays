@@ -50,12 +50,15 @@ read -p "If [up to date with 'origin/main'], press any key to continue ..."
 echo -e "\nUploading to GitHub..."
 
 # Add
+echo -e "\n"
 git add .
 
 # Commit
+echo -e "\n"
 git commit -m "New replays from Wine Linux X230"
 
 # Push
+echo -e "\n"
 git push
 
 
