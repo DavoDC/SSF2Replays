@@ -2,8 +2,9 @@
 My Super Smash Flash 2 (SSF2) replay files.
 Helps me synchronize my replays across multiple computers.
 
-Note: Often the dates on the replays are one day ahead for some reason.
+Note: Often the dates on the replays are one day ahead due to a coding error within SSF2.
 
-Run `updateREADME.py` to update the line below.
+Use `runUpdater.sh` to upload to the repo,
+or run `updateREADME.py` to update the line below before commits.
 
 ### Replay Count = 3861 (as of 24/02/22)

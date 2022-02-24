@@ -63,4 +63,4 @@ git push
 
 
 ### Finish message
-echo -e "\n\nFinished!"
+echo -e "\n\nFinished!\n"
