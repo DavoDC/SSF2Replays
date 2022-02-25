@@ -7,4 +7,4 @@ Note: Often the dates on the replays are one day ahead due to a coding error wit
 Use `runUpdater.sh` to upload to the repo,
 or run `updateREADME.py` to update the line below before commits.
 
-### Replay Count = 3861 (as of 24/02/22)
+### Replay Count = 3868 (as of 25/02/22)

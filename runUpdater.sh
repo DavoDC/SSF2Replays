@@ -57,6 +57,9 @@ git add .
 echo -e "\n"
 git commit -m "New replays from Wine Linux X230"
 
+# Check and/or amend commit
+git commit --amend
+
 # Push
 echo -e "\n"
 git push
