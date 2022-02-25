@@ -11,7 +11,7 @@ echo -e "\n### Welcome to SSF2 Repo Updater"
 echo -e "\nUpdating README..."
 
 # Run script silently
-python3 updateREADME.py > NUL
+python3 updateREADME.py > /dev/null
 
 
 ### Check new README
@@ -36,7 +36,7 @@ echo -e "\nChecking repo..."
 echo -e "\n"
 
 # Check against remote quietly
-git fetch > NUL
+git fetch > /dev/null
 
 # Get first part status
 git status | head -n 3
@@ -65,5 +65,19 @@ echo -e "\n"
 git push
 
 
+
+### Open repo
+# Notify
+echo -e "\nOpening repo site..."
+
+# Open repo link quietly
+bash -c "xdg-open https://github.com/DavoDC/SSF2Replays" 2> /dev/null > /dev/null
+
+
+
 ### Finish message
 echo -e "\n\nFinished!\n"
+
+
+
+
