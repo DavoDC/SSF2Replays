@@ -7,8 +7,8 @@ Here is my YouTube channel where I upload recordings of some of these replays:
 
 **Note about replay dates:**
 <br /> Many dates on the replays are one day ahead due to a coding error within SSF2.
-<br /> This glitch in SSF2 can be fixed by following the instructions here: 
-<br /> https://drive.google.com/file/d/1JUwzipq2B3tJ0CdS80Ch-s3MRRqHVLU5
+<br /> This error in SSF2 can be fixed by following the instructions here: 
+<br /> https://www.reddit.com/r/SuperSmashFlash/comments/t3z28b/fixing_the_replay_autosave_date_day_glitcherror
 
 **Note to self:**
 <br /> Use `runUpdater.sh` to upload to the repo
