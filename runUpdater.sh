@@ -14,18 +14,21 @@ echo -e "\nUpdating README..."
 python3 updateREADME.py > /dev/null
 
 
+
 ### Check new README
+# DISABLED BECAUSE IT IS WORKING PERFECTLY
 # Notify
-echo -e "\nNew README:"
+# echo -e "\nNew README:"
 
 # Print readme
-cat README.md
+# cat README.md
 
 # New line
-echo -e "\n"
+# echo -e "\n"
 
 # Wait for check
-read -p "If the README looks correct, press any key to continue ..."
+# read -p "If the README looks correct, press any key to continue ..."
+
 
 
 ### Check repo
@@ -42,6 +45,7 @@ git fetch > /dev/null
 git status | head -n 3
 
 # Wait for check
+echo -e "\n"
 read -p "If [up to date with 'origin/main'], press any key to continue ..."
 
 
@@ -57,7 +61,7 @@ git add .
 echo -e "\n"
 git commit -m "New replays from Wine Linux X230"
 
-# Check and/or amend commit
+# Check and/or amend commit (add more to message)
 git commit --amend
 
 # Push
