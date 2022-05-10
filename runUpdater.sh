@@ -71,11 +71,12 @@ git push
 
 
 ### Open repo
+# DISABLED
 # Notify
-echo -e "\nOpening repo site..."
+# echo -e "\nOpening repo site..."
 
 # Open repo link quietly
-bash -c "xdg-open https://github.com/DavoDC/SSF2Replays" 2> /dev/null > /dev/null
+# bash -c "xdg-open https://github.com/DavoDC/SSF2Replays" 2> /dev/null > /dev/null
 
 
 
