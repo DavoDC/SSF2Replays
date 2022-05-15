@@ -59,7 +59,7 @@ git add .
 
 # Commit
 echo -e "\n"
-git commit -m "New replays from Wine Linux X230"
+git commit -m "Linux X230: <Player>"
 
 # Check and/or amend commit (add more to message)
 git commit --amend
