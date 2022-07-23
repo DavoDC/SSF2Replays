@@ -14,4 +14,4 @@ Here is my YouTube channel where I upload recordings of some of these replays:
 <br /> Use `runUpdater.sh` to upload to the repo
 <br /> OR run `updateREADME.py` to update the line below before making commits
 
-### Replay Count = 4520 (as of 18/07/22)
+### Replay Count = 4524 (as of 23/07/22)
