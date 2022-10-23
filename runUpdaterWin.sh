@@ -3,7 +3,8 @@
 
 # Start message
 clear
-echo -e "\n### Welcome to SSF2 Repo Updater"
+echo -e "\n### Welcome to SSF2 Repo Updater (WINDOWS)"
+### CHANGED
 
 
 ### Update README
@@ -60,7 +61,7 @@ git add .
 # Commit
 echo -e "\n"
 
-### ONLY LINE THAT IS DIFFERENT
+### CHANGED
 git commit -m "Windows LEGION: <Player>"
 
 # Check and/or amend commit (add more to message)
