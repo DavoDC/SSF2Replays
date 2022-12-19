@@ -1,9 +1,10 @@
+#!/bin/sh
 
 ### Update SSF2 Replays Repo Script
 
 # Start message
 clear
-echo -e "\n### Welcome to SSF2 Repo Updater"
+echo -e "\n### Welcome to SSF2 Repo Updater (LINUX)"
 
 
 ### Update README

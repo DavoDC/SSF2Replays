@@ -1,3 +1,4 @@
+#!/bin/sh
 
 ### Update SSF2 Replays Repo Script
 

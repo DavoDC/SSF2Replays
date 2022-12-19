@@ -11,7 +11,7 @@ Here is my YouTube channel where I upload recordings of some of these replays:
 <br /> https://www.reddit.com/r/SuperSmashFlash/comments/t3z28b/fixing_the_replay_autosave_date_day_glitcherror
 
 **Note to self:**
-<br /> Use `runUpdater.sh` to upload to the repo
-<br /> OR run `updateREADME.py` to update the line below before making commits
+<br /> `updateREADME.py` must be ran before making comments to ensure the line below is correct. 
+<br /> So use the 'runUpdater' scripts provided when committing/pushing.
 
-### Replay Count = 4890 (as of 17/12/22)
+### Replay Count = 4897 (as of 19/12/22)
