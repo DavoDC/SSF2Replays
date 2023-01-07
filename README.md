@@ -14,4 +14,4 @@ Here is my YouTube channel where I upload recordings of some of these replays:
 <br /> `updateREADME.py` must be ran before making comments to ensure the line below is correct. 
 <br /> So use the 'runUpdater' scripts provided when committing/pushing.
 
-### Replay Count = 4914 (as of 29/12/22)
+### Replay Count = 4917 (as of 07/01/23)
