@@ -84,6 +84,10 @@ git push
 
 
 
+### NEW, PRINT FINAL COUNT, last line of README
+tail -1 README.md
+
+
 ### Finish message
 echo -e "\n\nFinished!\n"
 
