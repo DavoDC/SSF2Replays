@@ -85,6 +85,7 @@ git push
 
 
 ### NEW, PRINT FINAL COUNT, last line of README
+echo -e "\n"
 tail -1 README.md
 
 
