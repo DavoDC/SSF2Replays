@@ -6,7 +6,8 @@ My Super Smash Flash 2 (SSF2) replay files.
 
 Here is [my YouTube channel](https://www.youtube.com/channel/UC4xPDj5h-MRmTaa8-xIBfaA/videos) where I upload recordings of some of these replays.
 
-The oldest replay in this repo is from **11th January 2021**. This is around when replay autosave was introduced in [version 1.3.0.0](https://www.supersmashflash.com/2020/12/ssf2-v1-3-released/).
+The oldest replay in this repo is from **11th January 2021**. 
+<br /> This is around when replay autosave was introduced in [version 1.3.0.0](https://www.supersmashflash.com/2020/12/ssf2-v1-3-released/).
 <br /> I started playing SSF2 much earlier (around 2014/2015) but unfortunately the replays from that time were not saved.
 
 ### Note about Replay Dates
