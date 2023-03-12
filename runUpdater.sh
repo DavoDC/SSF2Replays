@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 ###### Update SSF2 Replays Repo Script ######
 
