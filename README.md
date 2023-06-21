@@ -6,7 +6,7 @@ My Super Smash Flash 2 (SSF2) replay files.
 
 Here is [my YouTube channel](https://www.youtube.com/channel/UC4xPDj5h-MRmTaa8-xIBfaA/videos) where I upload recordings of some of these replays.
 
-I created a program to analyse these replays: [ReplaysAnalyser](https://github.com/DavoDC/ReplaysAnalyser).
+I created a program to analyse these replays: [Replays Analyser](https://github.com/DavoDC/ReplaysAnalyser).
 
 ### Reply Dates
 The oldest replay in this repo is from **11th January 2021**. 
@@ -20,4 +20,4 @@ Many dates on the replays are one day ahead due to a coding error within SSF2.
 `updateREADME.py` must be ran before making commits to ensure the replay count below is correct. 
 <br /> So use the script provided (`runUpdater.sh`) when committing/pushing.
 
-### Replay Count = 5018 (as of 03/06/23)
+### Replay Count = 5021 (as of 21/06/23)
