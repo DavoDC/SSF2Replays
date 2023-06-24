@@ -57,10 +57,10 @@ def getNewReplayCountLine():
 def updateReplayCountLine(newReplayLine):
     # New content holder
     updatedContent = ""
-    
+
     # Flag to track if the replay line is found
     replayLineFound = False
-    
+
     # Open README file in read mode and iterate over lines
     with open(README_FILE_PATH, "r") as readmeFile:
         for line in readmeFile:
@@ -68,6 +68,13 @@ def updateReplayCountLine(newReplayLine):
             # If the line starts with part of the template
             if line.startswith(TEMPLATE_STRING.split(" = ")[0]):
 
+                # If line matches
+                if line.strip() == newReplayLine:
+
+                    # Notify and stop
+                    print("\nReplay line is already up to date!")
+                    return
+                
                 # Append the new replay line instead
                 updatedContent += newReplayLine + "\n"
 
@@ -80,16 +87,14 @@ def updateReplayCountLine(newReplayLine):
     # If the replay line is found
     if replayLineFound:
 
-        # Open README file in write mode
+        # Open README file in write mode and write new content
         with open(README_FILE_PATH, "w") as readmeFile:
-
-            # Write the updated content to the file
             readmeFile.write(updatedContent)
-        
-        # Display a success message
+
+        # Notify about success
         print("\nSuccessfully updated README!")
     else:
-        # Display an error message if the replay line is not found
+        # Else if not found, notify
         print("\nERROR! Replay line not found in README.")
 
 # If file is run from the command line:
