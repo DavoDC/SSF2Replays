@@ -11,6 +11,11 @@ import os
 import sys
 import datetime
 
+# Constants for exit codes
+SUCCESS = 0
+ERROR = 1
+UP_TO_DATE = 2
+
 # String constants
 REPLAY_COUNT_PLACEHOLDER = "NUM"
 DATE_PLACEHOLDER = "DATE"
@@ -71,9 +76,9 @@ def updateReplayCountLine(newReplayLine):
                 # If line matches
                 if line.strip() == newReplayLine:
 
-                    # Notify and stop
+                    # Notify and exit with up-to-date code
                     print("\nReplay line is already up to date!")
-                    return
+                    sys.exit(UP_TO_DATE)
                 
                 # Append the new replay line instead
                 updatedContent += newReplayLine + "\n"
@@ -91,11 +96,13 @@ def updateReplayCountLine(newReplayLine):
         with open(README_FILE_PATH, "w") as readmeFile:
             readmeFile.write(updatedContent)
 
-        # Notify about success
+        # Notify about success and exit with success code
         print("\nSuccessfully updated README!")
+        sys.exit(SUCCESS)
     else:
-        # Else if not found, notify
+        # Else if not found, notify and exit with error code
         print("\nERROR! Replay line not found in README.")
+        sys.exit(ERROR)
 
 # If file is run from the command line:
 if __name__ == '__main__':
