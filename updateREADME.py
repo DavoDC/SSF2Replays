@@ -1,168 +1,98 @@
 #!/usr/bin/env python3
 
 # Name: Update README
-# Authors: David 
-# Last Update: 02 FEB 2022
+# Author: David
+# Last Update: 24 JUNE 2023
 # Requirements: Python 3.8
 # Run using: clear && python3 updateREADME.py
-# Run in: SSF2Replays folder (or repo folder)
+# Run in: SSF2Replays repo folder
 
-
-# Import modules
 import os
 import sys
 import datetime
 
+# String constants
+REPLAY_COUNT_PLACEHOLDER = "NUM"
+DATE_PLACEHOLDER = "DATE"
+TEMPLATE_STRING = f"### Replay Count = {REPLAY_COUNT_PLACEHOLDER} (as of {DATE_PLACEHOLDER})"
+README_FILE_PATH = "README.md"
 
+def main():
+    print("###### Update README by David ######")
+    updateReplayCountLine(getNewReplayCountLine())
 
-# Main function
-def main(arguments):
+def getNewReplayCountLine():
+    # Initialize template
+    newReplayLine = TEMPLATE_STRING
 
-    # Notify
-    print("###### UPDATE README by David ######")
-
-    # Get replay directories
-    replayDirs = getReplayDirs()
-
-    # Get new replay count/line
-    newReplayLine = getNewReplayLine(replayDirs)
-
-    # Notify
-    print("\nGenerated new line: \n" + newReplayLine)
-
-    # Update replay count in README file
-    updateReplayCount(newReplayLine)
-
-    # Notify
-    print("\nSuccessfully wrote to README file")
-    
-
-
-
-
-# Get replay directories
-def getReplayDirs():
-
-    # Get directory that script is running in
+    # Get replay count
+    # Get the directory that script is running in
     runPath = os.path.abspath(os.path.dirname(__file__))
 
-    # Get file and folder paths there
-    paths = [os.path.abspath(x) for x in os.listdir(runPath)]
+    # Get all file paths with the .ssfrec extension
+    # in the current directory and its subdirectories,
+    # excluding the .git folder
+    replayFiles = [
+        os.path.join(root, file)
+        for root, dirs, files in os.walk(runPath)
+        if '.git' not in root
+        for file in files
+        if file.endswith('.ssfrec')
+    ]
 
-    # Replay directories holder
-    replayDirs = list()
+    # The replay count is the number of .ssfrec paths
+    replayCount = len(replayFiles)
 
-    # For each file/folder path
-    for curPath in paths:
+    # Replace replay count
+    newReplayLine = newReplayLine.replace(REPLAY_COUNT_PLACEHOLDER, str(replayCount))
 
-        # Convert to string
-        curPathS = str(curPath)
-
-        # Check that path is not an un-needed path
-        check1 = 'README' not in curPathS
-        check2 = '.git' not in curPathS
-
-        # If directory passes checks (i.e. it is needed)
-        if(check1 and check2):
-
-            # Add to replay directories list
-            replayDirs.append(curPathS)
-
-    # Return replay directories
-    return replayDirs
-
-
-
-
-# Get new replay count/line
-def getNewReplayLine(replayDirs):
-
-    ### Count replays
-
-    # Replay count holder
-    replayCount = 0
-
-    # For each replay directory
-    for replayPathS in replayDirs:
-
-        # Iterate that directory
-        for root, dirs, files in os.walk(replayPathS):
-
-            # For each file found
-            for file in files:
-
-                    # If has replay extension
-                    if file.endswith('.ssfrec'):
-
-                            # Add to replay count
-                            replayCount += 1
-
-    ### Generate README line from replay count
-
-    # Initialize string template/format string
-    newReplayLine = "### Replay Count = NUM (as of DATE)"
-
-    # Add replay count number
-    newReplayLine = newReplayLine.replace("NUM", str(replayCount))
-
-    # Get date string
+    # Replace date
     dateS = datetime.datetime.today().strftime('%d/%m/%y')
+    newReplayLine = newReplayLine.replace(DATE_PLACEHOLDER, str(dateS))
 
-    # Add date
-    newReplayLine = newReplayLine.replace("DATE", str(dateS))
-
-    # Return new replay line
+    # Notify and return
+    print("\nGenerated new line: \n" + newReplayLine)
     return newReplayLine
 
-
-
-
-
-
-# Update replay count in README file
-def updateReplayCount(newReplayLine):
-
-    # Open readme file for reading and writing
-    readmeFile = open("README.md", "r+")
-
-    # Get readme file lines
-    readmeLines = readmeFile.readlines()
+def updateReplayCountLine(newReplayLine):
+    # New content holder
+    updatedContent = ""
     
-    ### Get replay line index
+    # Flag to track if the replay line is found
+    replayLineFound = False
+    
+    # Open README file in read mode and iterate over lines
+    with open(README_FILE_PATH, "r") as readmeFile:
+        for line in readmeFile:
 
-    # Replay line index holder
-    replayLineIndex = 0
+            # If the line starts with part of the template
+            if line.startswith(TEMPLATE_STRING.split(" = ")[0]):
 
-    # For each index
-    for curIndex in range(len(readmeLines)):
+                # Append the new replay line instead
+                updatedContent += newReplayLine + "\n"
 
-        # Get line
-        curLine = readmeLines[curIndex]
+                # Set the flag to indicate that the replay line is found
+                replayLineFound = True
+            else:
+                # For normal lines, just append
+                updatedContent += line
 
-        # If this is replay line
-        if "### Replay Count" in curLine:
+    # If the replay line is found
+    if replayLineFound:
 
-            # Save index and stop
-            replayLineIndex = curIndex
-            break
+        # Open README file in write mode
+        with open(README_FILE_PATH, "w") as readmeFile:
 
-    # Replace that line with new one
-    readmeLines[replayLineIndex] = newReplayLine
-
-    # Seek back to start of file (prevents appending/doubling up)
-    readmeFile.seek(0)
-
-    # Write the new lines
-    for line in readmeLines:
-        readmeFile.write(line)
-
-    # Close readme file
-    readmeFile.close()
-
-
+            # Write the updated content to the file
+            readmeFile.write(updatedContent)
+        
+        # Display a success message
+        print("\nSuccessfully updated README!")
+    else:
+        # Display an error message if the replay line is not found
+        print("\nERROR! Replay line not found in README.")
 
 # If file is run from the command line:
 if __name__ == '__main__':
-
-    # Run main function with arguments then exit
-    sys.exit(main(sys.argv[1:]))
+    # Run main and exit
+    sys.exit(main())
