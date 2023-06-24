@@ -22,5 +22,5 @@ Many dates on the replays are one day ahead due to a coding error within SSF2.
 
 ### Replay Count = 5028 (as of 24/06/23)
 
-These two lines 
-are for protection.
+These lines *safeguard* against file content corruption during programmatic updates, 
+<br /> preserving the content above and the file's line ending, similar to DNA telomeres.
