@@ -1,0 +1,20 @@
+
+Remove replay line printing from bash 
+
+
+Rename bash to commitNewReplays
+
+
+Use readme script to determine if to commit , says replays up to date 
+
+
+
+Use argument to control py printing , then u don’t need to find in bash 
+
+Only if verbose passed in , do all printing
+
+
+Add github connection test + enable committing
+
+
+Put github committing in separate script?
