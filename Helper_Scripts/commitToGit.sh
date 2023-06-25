@@ -43,7 +43,7 @@ status_output=$(git status --porcelain)
 # If output empty
 if [[ -z "$status_output" ]]; then
     # Notify
-    echo "\nThe local repo has no new changes!"
+    echo -e "\nThe local repo has no new changes!"
     exit 1
 fi
 
