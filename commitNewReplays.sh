@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-############ Update SSF2 Replays Repo Script ############
+############ SSF2 Replays Repo Updater ############
 
 
 ###### Global Variables
@@ -11,7 +11,7 @@ SCRIPT_FOLDER="Helper_Scripts"
 # README updater script path
 README_SCRIPT="$SCRIPT_FOLDER/updateREADME.py"
 
-# Constants for README script exit codes
+# README updater script exit codes
 README_SUCCESS=0
 README_ERROR=1
 README_UP_TO_DATE=2
@@ -25,7 +25,7 @@ COMMIT_SCRIPT="$SCRIPT_FOLDER/commitToGit.sh"
 
 # Clear terminal and print start message
 clear
-echo -e "\n### Welcome to SSF2 Repo Updater ###"
+echo -e "\n### SSF2 Replays Repo Updater ###"
 
 
 # Notify
@@ -34,20 +34,24 @@ echo -e "\n# Checking files..."
 
 # Run README script and capture its output
 readme_output=$(python3 "$README_SCRIPT") 
-python_exit_code=$?
+readme_exit_code=$?
 
 
 # Act based on README script exit code
-if [ $python_exit_code -eq $README_SUCCESS ]; then
+if [ $readme_exit_code -eq $README_SUCCESS ]; then
 
     # If README was updated, we assume replays need updating too.
+    # This works because we are comparing
+    # the current replay count to the count previously committed.
     echo -e "New files detected!"
+    
     echo -e "\n# Updated README replay count!"
     echo "$readme_output"
+
     echo -e "\n# Starting commit sequence!"
     ./$COMMIT_SCRIPT
 
-elif [ $python_exit_code -eq $README_UP_TO_DATE ]; then
+elif [ $readme_exit_code -eq $README_UP_TO_DATE ]; then
 
     # If README is up-to-date, we assume replays are too.
     echo -e "\nAlready up to date!"
