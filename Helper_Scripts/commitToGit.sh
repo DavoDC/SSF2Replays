@@ -54,16 +54,13 @@ echo -e "\nRepo passed checks!"
 echo -e "\nStarting GitHub update..."
 
 # Add all new files
-echo -e "\n"
 git add .
 
 # Commit with message
-echo -e "\n"
 git commit -m "$detected_os: <Player(s)>"
 
 # Add commit description via text editor
 git commit --amend
 
 # Push to remote
-echo -e "\n"
 git push
