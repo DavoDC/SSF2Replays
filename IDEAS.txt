@@ -17,4 +17,12 @@ Only if verbose passed in , do all printing
 Add github connection test + enable committing
 
 
-Put github committing in separate script?
+Put github committing in separate script!! 
+
+move OS detection to where it is needed Only
+
+check python3 is working
+
+Add zero replays case ssf2 repo 
+
+Add all error cases throughout

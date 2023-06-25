@@ -8,7 +8,7 @@ Here is [my YouTube channel](https://www.youtube.com/channel/UC4xPDj5h-MRmTaa8-x
 
 I created a program to analyse these replays: [Replays Analyser](https://github.com/DavoDC/ReplaysAnalyser).
 
-### Reply Dates
+### Replay Dates
 The oldest replay in this repo is from **11th January 2021**. 
 <br /> This is around when replay autosave was introduced in [version 1.3.0.0](https://www.supersmashflash.com/2020/12/ssf2-v1-3-released/).
 <br /> I started playing SSF2 much earlier (around 2014) but unfortunately the replays from that time were not saved.
