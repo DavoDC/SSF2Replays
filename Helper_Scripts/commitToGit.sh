@@ -1,18 +1,6 @@
 #!/usr/bin/env bash
 
 
-### Detect operating system, notifying if fails
-detected_os=""
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    detected_os="Linux X230"
-elif [[ "$OSTYPE" == "msys" ]]; then
-    detected_os="Windows LEGION"
-else
-    echo -e "\nOperating System Detection Error!"
-    exit 1
-fi
-
-
 ### Fetch from remote quietly, notifying if fails
 fetch_output=$(git fetch origin 2>&1)
 fetch_exit_code=$?
@@ -44,6 +32,18 @@ status_output=$(git status --porcelain)
 if [[ -z "$status_output" ]]; then
     # Notify
     echo -e "\nThe local repo has no new changes!"
+    exit 1
+fi
+
+
+### Detect operating system, notifying if fails
+detected_os=""
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    detected_os="Linux X230"
+elif [[ "$OSTYPE" == "msys" ]]; then
+    detected_os="Windows LEGION"
+else
+    echo -e "\nOperating System Detection Error!"
     exit 1
 fi
 

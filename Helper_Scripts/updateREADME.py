@@ -26,11 +26,11 @@ def main():
     # Start message
     printV("###### Update README by David ######")
 
-    # Get replay count
-    replayCount = getNewReplayCountLine()
+    # Get new replay count line
+    newLine = getNewReplayCountLine()
 
-    # Update replay count line
-    updateReplayCountLine(replayCount)
+    # Update current replay count line
+    updateReplayCountLine(newLine)
 
 
 
@@ -56,9 +56,9 @@ def getNewReplayCountLine():
     # The replay count is the number of .ssfrec paths
     replayCount = len(replayFiles)
 
-    # If zero found, notify and stop
+    # If none found, notify and stop
     if replayCount == 0:
-        printV("\nERROR! Zero replays found!")
+        printV("\nERROR! No replays found!")
         sys.exit(ERROR)
 
     # Replace replay count
