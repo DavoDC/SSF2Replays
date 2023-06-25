@@ -1,12 +1,13 @@
 # Davo's SSF2 Replays Repository
 
 ### General
-My Super Smash Flash 2 (SSF2) replay files.
+My [Super Smash Flash 2](https://mcleodgaming.fandom.com/wiki/Super_Smash_Flash_2) (SSF2) replay files.
 <br />This repo helps me synchronize my replays across multiple computers, back them up, share them publicly etc.
 
 Here is [my YouTube channel](https://www.youtube.com/channel/UC4xPDj5h-MRmTaa8-xIBfaA/videos) where I upload recordings of some of these replays.
 
 I created a program to analyse these replays: [Replays Analyser](https://github.com/DavoDC/ReplaysAnalyser).
+
 
 ### Replay Dates
 The oldest replay in this repo is from **11th January 2021**. 
@@ -16,9 +17,11 @@ The oldest replay in this repo is from **11th January 2021**.
 Many dates on the replays are one day ahead due to a coding error within SSF2.
 <br /> This error in SSF2 can be fixed by following the instructions in [this Reddit post](https://www.reddit.com/r/SuperSmashFlash/comments/t3z28b/fixing_the_replay_autosave_date_day_glitcherror).
 
+
 ### Note to Self
-`updateREADME.py` must be ran before making commits to ensure the replay count below is correct. 
-<br /> So use the script provided (`commitNewReplays.sh`) when committing/pushing.
+Use the script provided (`commitNewReplays.sh`) when making commits to this repo.
+<br /> This ensures the replay count line below gets updated!
+
 
 ### Replay Count = 5031 (as of 25/06/23)
 
