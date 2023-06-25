@@ -2,62 +2,64 @@
 
 ############ Update SSF2 Replays Repo Script ############
 
+
 ###### Global Variables
 
-# Name of helper script folder
+# Helper script path
 SCRIPT_FOLDER="Helper_Scripts"
 
-# Name of README updater script
-UPDATE_SCRIPT="$SCRIPT_FOLDER/updateREADME.py"
+# README updater script path
+README_SCRIPT="$SCRIPT_FOLDER/updateREADME.py"
 
 # Constants for README script exit codes
 README_SUCCESS=0
 README_ERROR=1
 README_UP_TO_DATE=2
 
-# Name of commit script
+# Commit script path
 COMMIT_SCRIPT="$SCRIPT_FOLDER/commitToGit.sh"
 
 
 
 ###### Main Script Execution
 
-### Clear terminal and print start message
+# Clear terminal and print start message
 clear
 echo -e "\n### Welcome to SSF2 Repo Updater ###"
 
-# TEST!!!
-./$COMMIT_SCRIPT
+
+# Notify
+echo -e "\n# Checking files..."
 
 
+# Run README script and capture its output
+readme_output=$(python3 "$README_SCRIPT") 
+python_exit_code=$?
 
 
-# # Notify
-# echo -e "\nUpdating README..."
+# Act based on README script exit code
+if [ $python_exit_code -eq $README_SUCCESS ]; then
 
-# # Run script quietly but capture exit code
-# python3 "$UPDATE_SCRIPT" > /dev/null 2>&1
-# python_exit_code=$?
+    # If README was updated, we assume replays need updating too.
+    echo -e "New files detected!"
+    echo -e "\n# Updated README replay count!"
+    echo "$readme_output"
+    echo -e "\n# Starting commit sequence!"
+    ./$COMMIT_SCRIPT
 
-# # Check exit code and perform actions
-# if [ $python_exit_code -eq $README_SUCCESS ]; then
-#     # Notify README_SUCCESS
-#     echo -e "\n$UPDATE_SCRIPT: README updated README_SUCCESSfully!"
+elif [ $python_exit_code -eq $README_UP_TO_DATE ]; then
 
-#     # Commit to GitHub
-#     # commit_to_github
+    # If README is up-to-date, we assume replays are too.
+    echo -e "\nAlready up to date!"
+    exit $README_UP_TO_DATE
 
-# elif [ $python_exit_code -eq $UP_TO_DATE ]; then
-#     # Notify already up to date and exit
-#     echo -e "\n$UPDATE_SCRIPT: README is already up to date!"
-#     exit $UP_TO_DATE
+else
+    # If README update fails, re-run README script verbosely and exit
+    echo -e "\nError! Re-running with output..."
+    python3 "$README_SCRIPT" "verbose"
+    exit $README_ERROR
+fi
 
-# else
-#     # Notify error and exit
-#     echo -e "\n$UPDATE_SCRIPT: Error! Re-running with output..."
-#     python3 "$UPDATE_SCRIPT"
-#     exit $ERROR
-# fi
 
-# ### Finish message
-# echo -e "\nFinished!\n"
+# Finish message
+echo -e "\n# Finished!"

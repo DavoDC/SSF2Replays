@@ -2,10 +2,8 @@
 
 # Name: Update README
 # Author: David
-# Last Update: 24 JUNE 2023
 # Requirements: Python 3.8
 # Run using: clear && python3 updateREADME.py
-# Run in: SSF2Replays repo folder
 
 import os
 import sys
@@ -22,24 +20,34 @@ DATE_PLACEHOLDER = "DATE"
 TEMPLATE_STRING = f"### Replay Count = {REPLAY_COUNT_PLACEHOLDER} (as of {DATE_PLACEHOLDER})"
 README_FILE_PATH = "README.md"
 
+
+
 def main():
-    print("###### Update README by David ######")
-    updateReplayCountLine(getNewReplayCountLine())
+    # Start message
+    printV("###### Update README by David ######")
+
+    # Get replay count
+    replayCount = getNewReplayCountLine()
+
+    # Update replay count line
+    updateReplayCountLine(replayCount)
+
+
 
 def getNewReplayCountLine():
     # Initialize template
     newReplayLine = TEMPLATE_STRING
 
-    # Get replay count
-    # Get the directory that script is running in
-    runPath = os.path.abspath(os.path.dirname(__file__))
+    # Get parent folder of script folder
+    scriptPath = os.path.abspath(os.path.dirname(__file__))
+    replayPath = os.path.dirname(scriptPath)
 
     # Get all file paths with the .ssfrec extension
     # in the current directory and its subdirectories,
     # excluding the .git folder
     replayFiles = [
         os.path.join(root, file)
-        for root, dirs, files in os.walk(runPath)
+        for root, dirs, files in os.walk(replayPath)
         if '.git' not in root
         for file in files
         if file.endswith('.ssfrec')
@@ -47,6 +55,11 @@ def getNewReplayCountLine():
 
     # The replay count is the number of .ssfrec paths
     replayCount = len(replayFiles)
+
+    # If zero found, notify and stop
+    if replayCount == 0:
+        printV("\nERROR! Zero replays found!")
+        sys.exit(ERROR)
 
     # Replace replay count
     newReplayLine = newReplayLine.replace(REPLAY_COUNT_PLACEHOLDER, str(replayCount))
@@ -56,8 +69,10 @@ def getNewReplayCountLine():
     newReplayLine = newReplayLine.replace(DATE_PLACEHOLDER, str(dateS))
 
     # Notify and return
-    print("\nGenerated new line: \n" + newReplayLine)
+    printV("\nGenerated new line: " + newReplayLine)
     return newReplayLine
+
+
 
 def updateReplayCountLine(newReplayLine):
     # New content holder
@@ -77,9 +92,14 @@ def updateReplayCountLine(newReplayLine):
                 if line.strip() == newReplayLine:
 
                     # Notify and exit with up-to-date code
-                    print("\nReplay line is already up to date!")
+                    printV("\nReplay line is already up to date!")
                     sys.exit(UP_TO_DATE)
                 
+                # Else if replay line needs updating:
+
+                # ALWAYS print out new line
+                print("New line: " + newReplayLine)
+
                 # Append the new replay line instead
                 updatedContent += newReplayLine + "\n"
 
@@ -97,12 +117,21 @@ def updateReplayCountLine(newReplayLine):
             readmeFile.write(updatedContent)
 
         # Notify about success and exit with success code
-        print("\nSuccessfully updated README!")
+        printV("\nSuccessfully updated README!")
         sys.exit(SUCCESS)
     else:
         # Else if not found, notify and exit with error code
-        print("\nERROR! Replay line not found in README.")
+        printV("\nERROR! Replay line not found in README.")
         sys.exit(ERROR)
+
+
+
+# Helper function to print message if 'verbose' is given as an argument
+def printV(message):
+    if 'verbose' in sys.argv:
+        print(message)
+
+
 
 # If file is run from the command line:
 if __name__ == '__main__':
