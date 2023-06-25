@@ -18,7 +18,7 @@ Many dates on the replays are one day ahead due to a coding error within SSF2.
 
 ### Note to Self
 `updateREADME.py` must be ran before making commits to ensure the replay count below is correct. 
-<br /> So use the script provided (`runUpdater.sh`) when committing/pushing.
+<br /> So use the script provided (`commitNewReplays.sh`) when committing/pushing.
 
 ### Replay Count = 5028 (as of 24/06/23)
 
