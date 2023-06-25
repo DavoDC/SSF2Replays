@@ -26,3 +26,7 @@ check python3 is working
 Add zero replays case ssf2 repo 
 
 Add all error cases throughout
+
+
+
+Update note to self in README !
