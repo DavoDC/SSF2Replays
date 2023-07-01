@@ -61,8 +61,7 @@ elif [ $readme_exit_code -eq $README_UP_TO_DATE ]; then
     exit $README_UP_TO_DATE
 
 else
-    # If README update fails, re-run README script verbosely and exit
-    echo -e "\nError! Re-running with output..."
-    python3 "$README_SCRIPT" "verbose"
+    # If README update fails, notify and exit
+    echo -e "\nError!"
     exit $README_ERROR
 fi

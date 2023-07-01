@@ -26,12 +26,16 @@ fi
 
 
 ### Check if local repo has uncommitted changes
-# Get porcelain git status output
+# Save git status output to a variable
 status_output=$(git status --porcelain)
-# If output empty
+
+# If output is empty, notify
 if [[ -z "$status_output" ]]; then
-    # Notify
     echo -e "\nThe local repo has no new changes!"
+    exit 1
+elif echo "$status_output" | grep -qv '^[MADRC].*\.ssfrec'; then
+    # Else if there are changes, but none involving replays, notify and exit
+    echo -e "\nThe changed files do not include any .ssfrec files!"
     exit 1
 fi
 
