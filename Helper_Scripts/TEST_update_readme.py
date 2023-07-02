@@ -5,7 +5,7 @@ import subprocess
 import globals
 
 # Execute README script
-exit_code = subprocess.call(['python', './update_readme.py', 'verbose', 'test'])
+exit_code = subprocess.call(['python3', './update_readme.py', 'verbose', 'test'])
 
 # Print the exit code
 print(f"\nExit Code: {exit_code} -> ", end="")

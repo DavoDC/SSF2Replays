@@ -1,0 +1,7 @@
+
+
+
+- readme_file = Fix line ending handling so doesn't change whole file!!
+
+- Test script = use python3 instead
+- Add permissions

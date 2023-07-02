@@ -18,7 +18,7 @@ class ReadmeFile:
         replay_line_updated = False
 
         # Open README file in read mode and read in lines
-        with open(readme_file_path, "r") as readme_file:
+        with open(readme_file_path, "r", newline='') as readme_file:
             lines = readme_file.readlines()
 
         # For each README line
@@ -53,7 +53,7 @@ class ReadmeFile:
         if replay_line_updated:
 
             # Open README file in write mode and write the new content to it
-            with open(readme_file_path, "w") as readme_file:
+            with open(readme_file_path, "w", newline='') as readme_file:
                 readme_file.writelines(new_content)
 
             # Notify about success and exit with a success code
@@ -67,7 +67,7 @@ def process_replay_line(replay_line):
     new_replay_line = ReplayLine()
 
     # If the given replay line is equivalent
-    if ReplayLine(replay_line) == new_replay_line:
+    if ReplayLine(replay_line.strip('\r\n')) == new_replay_line:
 
         # The replay line is already up-to-date
         print_v("Generated new line: " + new_replay_line.to_string())
