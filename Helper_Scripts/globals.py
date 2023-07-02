@@ -16,7 +16,6 @@ def print_v(message, addNewLineAtStart=True):
         else:
             print(message)
 
-
 # Global error handling function
 def handle_error(errorDescription):
     print_v("Error: " + errorDescription + "!")
