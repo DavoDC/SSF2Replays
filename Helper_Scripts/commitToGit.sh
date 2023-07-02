@@ -12,11 +12,11 @@ fi
 
 
 ### Check local repo against remote
-# Get the latest hashes of local and remote commits
+# Compare hashes of latest local and remote commits
 latest_local_commit_hash=$(git rev-parse HEAD)
 latest_remote_commit_hash=$(git rev-parse origin/main)
-# If they don't match
 if [ "$latest_local_commit_hash" != "$latest_remote_commit_hash" ]; then
+
     # Notify, pull, and exit
     echo -e "\nThe local repo is not up-to-date with the remote!"
     echo -e "Updating from the remote and exiting. Please check results and try again.\n"
@@ -25,17 +25,17 @@ if [ "$latest_local_commit_hash" != "$latest_remote_commit_hash" ]; then
 fi
 
 
-### Check if local repo has uncommitted changes
+### Check the uncommitted changes to the local repo
 # Save git status output to a variable
-status_output=$(git status --porcelain)
+status_output=$(git status --porcelain --untracked-files=all)
 
 # If output is empty, notify
 if [[ -z "$status_output" ]]; then
     echo -e "\nThe local repo has no new changes!"
     exit 1
-elif echo "$status_output" | grep -qv '^[MADRC].*\.ssfrec'; then
+elif ! echo "$status_output" | grep -q ".ssfrec"; then
     # Else if there are changes, but none involving replays, notify and exit
-    echo -e "\nThe changed files do not include any .ssfrec files!"
+    echo -e "\nNo new replays found!"
     exit 1
 fi
 
