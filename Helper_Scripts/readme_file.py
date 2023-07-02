@@ -11,65 +11,69 @@ from replay_line import ReplayLine
 class ReadmeFile:
     def __init__(self, readme_file_path):
             
-        # Create new ReplayLine
-        newReplayLine = ReplayLine()
-        printV("\nGenerated new line: " + newReplayLine.to_string())
-
-        # New content holder
-        updatedContent = ""
-
-        # Flag to track if the replay line was found
-        replayLineFound = False
+        # Create a new ReplayLine and notify
+        new_replay_line = ReplayLine()
+        printV("\nGenerated new line: " + new_replay_line.to_string())
 
         # Open README file in read mode
-        with open(readme_file_path, "r") as readmeFile:
+        with open(readme_file_path, "r") as readme_file:
 
-            # Iterate over lines, processing each
-            for line in readmeFile:
-                replayLineFound, updatedContent = process_line(line, newReplayLine, replayLineFound, updatedContent)
+            # Read all lines from the README file
+            lines = readme_file.readlines()
 
-        # If the replay line was found
-        if replayLineFound:
+        # Process the lines to find and update the replay line
+        replay_line_updated, updated_content = self.process_lines(lines, new_replay_line)
 
-            # Open README file in write mode and write new content
-            with open(readme_file_path, "w") as readmeFile:
-                readmeFile.write(updatedContent)
+        # If the replay line was found and updated
+        if replay_line_updated:
 
-            # Notify about success and exit with success code
+            # Open README file in write mode and write the updated content
+            with open(readme_file_path, "w") as readme_file:
+                readme_file.writelines(updated_content)
+
+            # Notify about success and exit with a success code
             printV("\nSuccessfully updated README!")
             sys.exit(SUCCESS)
         else:
-            # Else if not found, notify and exit with error code
+            # Else if not found, notify and exit with an error code
             printV("\nERROR! Replay line not found in README.")
             sys.exit(ERROR)
 
+    @staticmethod
+    def process_lines(lines, new_replay_line):
+        # Content holder for updated README content
+        updated_content = []
 
-def process_line(line, newReplayLine, replayLineFound, updatedContent):
+        # Flag to track if the replay line was found and updated
+        replay_line_updated = False
 
-    # If the given line is the replay line of the README file
-    if ReplayLine.is_replay_line(line):
+        # Iterate over lines, processing each
+        for line in lines:
 
-        # If the replay line matches the new one
-        if ReplayLine(line) == newReplayLine:
+            # If this is the replay line
+            if ReplayLine.is_replay_line(line):
 
-            # Notify and exit with up-to-date code
-            printV("\nReplay line is already up to date!")
-            sys.exit(UP_TO_DATE)
-        else:
-            # Else if replay line needs updating:
-            # Convert new line to string
-            newReplayLineS = newReplayLine.to_string()
+                # If equivalent to new one
+                if ReplayLine(line) == new_replay_line:
 
-            # Always print out new line
-            print("New line: " + newReplayLineS)
+                    # Notify and exit with an up-to-date code
+                    printV("\nReplay line is already up to date!")
+                    sys.exit(UP_TO_DATE)
+                else:
+                    # Else if the replay line needs updating:
+                    # Convert the new line to a string
+                    new_replay_line_str = new_replay_line.to_string()
 
-            # Append new line to content instead of old line
-            updatedContent += newReplayLineS + "\n"
+                    # Always print out the new line
+                    print("New line: " + new_replay_line_str)
 
-            # Set the flag to indicate that the replay line is found
-            replayLineFound = True
-    else:
-        # For normal lines, just append as-is
-        updatedContent += line
+                    # Append the new line to the content instead of the old line
+                    updated_content.append(new_replay_line_str + "\n")
 
-    return replayLineFound, updatedContent
+                    # Set the flag to indicate that the replay line is found and updated
+                    replay_line_updated = True
+            else:
+                # For normal lines, just append as-is
+                updated_content.append(line)
+
+        return replay_line_updated, updated_content
