@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
-# Imports
+# Libraries
 import os
 import sys
 import datetime
 
-# Constants
+# String template constants
 COUNT_PLACEHOLDER = "NUM"
 DATE_PLACEHOLDER = "DATE"
 TEMPLATE_STRING = f"### Replay Count = {COUNT_PLACEHOLDER} (as of {DATE_PLACEHOLDER})"
@@ -67,4 +67,3 @@ class ReplayLine:
         if isinstance(other, ReplayLine):
             return self.replayCount == other.replayCount
         return False
-

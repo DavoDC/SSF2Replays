@@ -8,9 +8,9 @@
 SCRIPT_FOLDER="Helper_Scripts"
 
 # README updater script path
-README_SCRIPT="$SCRIPT_FOLDER/updateREADME.py"
+README_SCRIPT="$SCRIPT_FOLDER/update_readme.py"
 
-# README updater script exit codes
+# README updater script exit codes (Must match those defind in python!)
 README_SUCCESS=0
 README_ERROR=1
 README_UP_TO_DATE=2
