@@ -4,20 +4,15 @@
 
 ###### Global Variables
 
-# Helper script path
+# Helper script paths
 SCRIPT_FOLDER="Helper_Scripts"
-
-# README updater script path
 README_SCRIPT="$SCRIPT_FOLDER/update_readme.py"
+COMMIT_SCRIPT="$SCRIPT_FOLDER/commitToGit.sh"
 
-# README updater script exit codes (Must match those defind in python!)
+# README updater script exit codes (Must match those defined in python!)
 README_SUCCESS=0
 README_ERROR=1
 README_UP_TO_DATE=2
-
-# Commit script path
-COMMIT_SCRIPT="$SCRIPT_FOLDER/commitToGit.sh"
-
 
 ###### Main Script Execution
 
@@ -25,9 +20,15 @@ COMMIT_SCRIPT="$SCRIPT_FOLDER/commitToGit.sh"
 clear
 echo -e "\n### SSF2 Replays Repo Updater ###"
 
+# Check if the scripts can be found
+if [ ! -f "$README_SCRIPT" ] || [ ! -f "$COMMIT_SCRIPT" ]; then
+    echo -e "\nError: Could not locate helper script(s)!"
+    exit $README_ERROR
+fi
+
 # Check Python 3 installation
 if ! command -v python3 &> /dev/null; then
-    echo -e "Error: Python 3 is required but not found."
+    echo -e "\nError: Python 3 is required but was not found!"
     exit $README_ERROR
 fi
 
@@ -62,6 +63,6 @@ elif [ $readme_exit_code -eq $README_UP_TO_DATE ]; then
 
 else
     # If README update fails, notify and exit
-    echo -e "\nError!"
+    echo -e "\nError: README script failed!"
     exit $README_ERROR
 fi

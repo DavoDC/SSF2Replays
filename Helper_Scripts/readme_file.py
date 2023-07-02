@@ -10,18 +10,15 @@ from replay_line import ReplayLine
 # Defines a class that represents the repo's README file
 class ReadmeFile:
     def __init__(self, readme_file_path):
-            
-        # Create a new ReplayLine and notify
+
+        # Create a new ReplayLine
         new_replay_line = ReplayLine()
-        printV("\nGenerated new line: " + new_replay_line.to_string())
 
-        # Open README file in read mode
+        # Open README file in read mode and read in lines
         with open(readme_file_path, "r") as readme_file:
-
-            # Read all lines from the README file
             lines = readme_file.readlines()
 
-        # Process the lines to find and update the replay line
+        # Process the lines to find and update the replay line, if needed
         replay_line_updated, updated_content = self.process_lines(lines, new_replay_line)
 
         # If the replay line was found and updated
@@ -32,12 +29,11 @@ class ReadmeFile:
                 readme_file.writelines(updated_content)
 
             # Notify about success and exit with a success code
-            printV("\nSuccessfully updated README!")
+            print_v("Successfully updated README!")
             sys.exit(SUCCESS)
         else:
             # Else if not found, notify and exit with an error code
-            printV("\nERROR! Replay line not found in README.")
-            sys.exit(ERROR)
+            handle_error("Replay line not found in README")
 
     @staticmethod
     def process_lines(lines, new_replay_line):
@@ -47,7 +43,7 @@ class ReadmeFile:
         # Flag to track if the replay line was found and updated
         replay_line_updated = False
 
-        # Iterate over lines, processing each
+        # Iterate over lines
         for line in lines:
 
             # If this is the replay line
@@ -57,7 +53,8 @@ class ReadmeFile:
                 if ReplayLine(line) == new_replay_line:
 
                     # Notify and exit with an up-to-date code
-                    printV("\nReplay line is already up to date!")
+                    print_v("Generated new line: " + new_replay_line.to_string())
+                    print_v("Replay line is already up to date!")
                     sys.exit(UP_TO_DATE)
                 else:
                     # Else if the replay line needs updating:
@@ -65,7 +62,7 @@ class ReadmeFile:
                     new_replay_line_str = new_replay_line.to_string()
 
                     # Always print out the new line
-                    print("New line: " + new_replay_line_str)
+                    print("\nNew line: " + new_replay_line_str)
 
                     # Append the new line to the content instead of the old line
                     updated_content.append(new_replay_line_str + "\n")

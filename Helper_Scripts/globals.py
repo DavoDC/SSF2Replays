@@ -9,6 +9,15 @@ ERROR = 1
 UP_TO_DATE = 2
 
 # Global printing function
-def printV(message):
+def print_v(message, addNewLineAtStart=True):
     if 'verbose' in sys.argv:
-        print(message)
+        if addNewLineAtStart:
+            print('\n' + message)
+        else:
+            print(message)
+
+
+# Global error handling function
+def handle_error(errorDescription):
+    print_v("Error: " + errorDescription + "!")
+    sys.exit(ERROR)

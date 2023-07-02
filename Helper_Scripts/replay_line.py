@@ -2,8 +2,10 @@
 
 # Libraries
 import os
-import sys
 import datetime
+
+# My libraries
+from globals import handle_error
 
 # String template constants
 COUNT_PLACEHOLDER = "NUM"
@@ -18,6 +20,7 @@ class ReplayLine:
 
         # If string provided
         if replayLine:
+            
             # Split into parts and save
             parts = replayLine.split("= ")[1].split(" (as of ")
             self.replayCount = int(parts[0])
@@ -47,8 +50,7 @@ class ReplayLine:
 
             # If none found, notify and stop
             if self.replayCount == 0:
-                print("\nERROR! No replays found!")
-                sys.exit(1)
+                handle_error("No replays found")
 
     # Get a string representation of the object
     def to_string(self):
