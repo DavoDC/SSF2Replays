@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-# Name: Update README
-# Author: David
 # Requirements: Python 3.8
 # Run using: clear && python3 updateREADME.py 'verbose'
 
@@ -23,44 +21,10 @@ def main():
     # Start message
     printV("###### Update README by David ######")
 
-    # Get new replay line
-    newReplayLine = getNewReplayLine()
-
-    # Update current replay count line
-    updateReplayCountLine(newReplayLine)
-
-
-def getNewReplayLine():
-    # Get parent folder of script folder
-    scriptPath = os.path.abspath(os.path.dirname(__file__))
-    replayPath = os.path.dirname(scriptPath)
-
-    # Get all file paths with the .ssfrec extension
-    # in the current directory and its subdirectories,
-    # excluding the .git folder
-    replayFiles = [
-        os.path.join(root, file)
-        for root, dirs, files in os.walk(replayPath)
-        if '.git' not in root
-        for file in files
-        if file.endswith('.ssfrec')
-    ]
-
-    # The replay count is the number of .ssfrec paths
-    replayCount = len(replayFiles)
-
-    # If none found, notify and stop
-    if replayCount == 0:
-        printV("\nERROR! No replays found!")
-        sys.exit(ERROR)
-    
-    # Create ReplayLine and return
-    newReplayLine = ReplayLine(replayCount=replayCount)
+    # Create new ReplayLine
+    newReplayLine = ReplayLine()
     printV("\nGenerated new line: " + newReplayLine.to_string())
-    return newReplayLine
 
-
-def updateReplayCountLine(newReplayLine):
     # New content holder
     updatedContent = ""
 
@@ -72,7 +36,7 @@ def updateReplayCountLine(newReplayLine):
 
         # Iterate over lines, processing each
         for line in readmeFile:
-            replayLineFound, updatedContent = processReadmeLine(line, newReplayLine, replayLineFound, updatedContent)
+            replayLineFound, updatedContent = process_line(line, newReplayLine, replayLineFound, updatedContent)
 
     # If the replay line is found
     if replayLineFound:
@@ -90,7 +54,7 @@ def updateReplayCountLine(newReplayLine):
         sys.exit(ERROR)
 
 
-def processReadmeLine(line, newReplayLine, replayLineFound, updatedContent):
+def process_line(line, newReplayLine, replayLineFound, updatedContent):
 
     # If the given line is the replay line of the README file
     if ReplayLine.isReplayLine(line):
