@@ -1,2 +1,6 @@
 
+# Python
 *.pyc
+
+# VS Code
+.vs
