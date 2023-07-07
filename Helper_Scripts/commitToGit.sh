@@ -53,9 +53,6 @@ fi
 
 
 ### Upload to GitHub
-# Notify
-echo -e "\nRepo passed checks!"
-echo -e "\nStarting GitHub update..."
 
 # Add all new files
 git add .
