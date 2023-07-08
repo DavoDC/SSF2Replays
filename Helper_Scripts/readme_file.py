@@ -65,17 +65,15 @@ def process_replay_line(replay_line):
 
     # Create ReplayLine with current repo state and date
     new_replay_line = ReplayLine()
+    new_replay_line_str = new_replay_line.to_string()
+    print("\nGenerated new line: " + new_replay_line_str)
 
     # If the given replay line is equivalent
     if ReplayLine(replay_line.strip('\r\n')) == new_replay_line:
 
-        # The replay line is already up-to-date
-        print_v("Generated new line: " + new_replay_line.to_string())
+        # Notify that already up-to-date
         print_v("Replay line is already up to date!")
         sys.exit(UP_TO_DATE)
     else:
-
-        # Else if the line needs updating, print updated line and return
-        new_replay_line_str = new_replay_line.to_string()
-        print("\nNew line: " + new_replay_line_str)
+        # Else if not equivalent, return updated line
         return new_replay_line_str + "\n"
