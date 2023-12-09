@@ -23,7 +23,7 @@ Use the script provided (`commitNewReplays.sh`) when making commits to this repo
 <br /> This ensures the replay count line below gets updated!
 
 
-### Replay Count = 5161 (as of 27/11/23)
+### Replay Count = 5166 (as of 09/12/23)
 
 These lines *safeguard* against file content corruption during programmatic updates, 
 <br /> preserving the content above and the file's line ending, similar to DNA telomeres.
