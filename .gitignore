@@ -3,4 +3,7 @@
 *.pyc
 
 # VS Code
-.vs
+*.vs
+
+# Other
+*.lnk
