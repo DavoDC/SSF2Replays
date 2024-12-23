@@ -15,7 +15,7 @@ The oldest replay in this repo is from **11th January 2021**.
 <br /> I started playing SSF2 much earlier (around 2014) but unfortunately the replays from that time were not saved.
 
 Many dates on the replays are one day ahead due to a coding error within SSF2.
-<br /> This error in SSF2 can be fixed by following the instructions in [this Reddit post](https://www.reddit.com/r/SuperSmashFlash/comments/t3z28b/fixing_the_replay_autosave_date_day_glitcherror).
+<br /> This error in SSF2 can be fixed by following the instructions [here](https://docs.google.com/document/d/1l5VrAaWmLozu9qnwdjz6MGA9GyurlkgNF8t72eZ4-54/edit?tab=t.0#heading=h.erak6p4wg3rc).
 
 
 ### Note to Self
