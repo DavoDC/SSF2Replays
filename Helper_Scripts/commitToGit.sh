@@ -60,8 +60,19 @@ git add .
 # Commit with message
 git commit -m "$detected_os: <Player(s)>"
 
-# Add commit description via text editor
+# Fix commit title and add description via text editor set in git config (core.editor)
 git commit --amend
+
+# If amendment failed
+git_commit_exit_code=$?
+if [ ! $git_commit_exit_code -eq 0 ]; then
+
+    # Notify and undo commands above
+    echo -e "\nFailed to amend commit!"
+    echo -e "Undoing the last commit and unstaging changes (while keeping local changes).\n"
+    git reset --mixed HEAD~1 
+    exit 1
+fi
 
 # Push to remote
 git push
