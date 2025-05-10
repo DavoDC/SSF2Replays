@@ -45,7 +45,7 @@ detected_os=""
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     detected_os="Linux X230"
 elif [[ "$OSTYPE" == "msys" ]]; then
-    detected_os="Windows LEGION"
+    detected_os="Windows RAPHAEL"
 else
     echo -e "\nOperating System Detection Error!"
     exit 1
