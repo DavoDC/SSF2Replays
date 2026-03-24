@@ -25,5 +25,9 @@ Use the script provided (`commitNewReplays.sh`) when making commits to this repo
 
 ### Replay Count = 5568 (as of 08/07/25)
 
-These lines *safeguard* against file content corruption during programmatic updates, 
+These lines *safeguard* against file content corruption during programmatic updates,
 <br /> preserving the content above and the file's line ending, similar to DNA telomeres.
+
+### Repository History
+
+**Started:** January 2022 · **Last updated:** July 2025 · Continuously updated as new replays are played.
