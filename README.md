@@ -34,4 +34,4 @@ These lines *safeguard* against file content corruption during programmatic upda
 
 ### Repository History
 
-**Started:** January 2022 · **Last updated:** July 2025 · Continuously updated as new replays are played.
+**Started:** January 2022 · Continuously updated as new replays are played.
