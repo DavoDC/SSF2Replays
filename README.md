@@ -1,5 +1,9 @@
 # Davo's SSF2 Replays Repository
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G31WKOCN)
+
+
+
 ### General
 My [Super Smash Flash 2](https://mcleodgaming.fandom.com/wiki/Super_Smash_Flash_2) (SSF2) replay files.
 <br />This repo helps me synchronize my replays across multiple computers, back them up, share them publicly etc.
